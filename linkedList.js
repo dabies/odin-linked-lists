@@ -140,6 +140,54 @@ class LinkedList {
         }
     }
 
+    //function to insert value at the given index
+    insertAt(newValue, index) {
+        //function to establish variables for current node and index
+        let current = this.head;
+        let currentIndex = 0;
+
+        //function to iterate over list until they arrive at index, and insert value
+        //condition to check for improper inputs
+        if (index > (this.size - 1) || index < 0) {
+            return `Indexes in this list range from 0 to ${this.size - 1}`
+        }
+
+        //while loop to iterate through list until it gets to desired index, then
+        //replaces value with new value
+        while(currentIndex < this.size) {
+            if (currentIndex === index) {
+                current.value = newValue;
+            }
+            current = current.next;
+            currentIndex++;
+        }
+    }
+
+    removeAt(index) {
+        //establishing variables for current and previous node, as well as
+        //current index
+        let current = this.head;
+        let previous = null;
+        let currentIndex = 0;
+
+        //condition to check for improper inputs
+        if (index > (this.size - 1) || index < 0) {
+            return `Indexes in this list range from 0 to ${this.size - 1}`
+        }
+
+        //while loop to iterate through list until it gets to desired index, then
+        //replaces value with new value
+        while(currentIndex < this.size) {
+            if (currentIndex === index) {
+                previous.next = current.next;
+                this.size--;
+            }
+            previous = current
+            current = current.next;
+            currentIndex++;
+        }
+
+    }       
 }
 
 const list = new LinkedList();
